@@ -1,0 +1,17 @@
+<package>
+  <description brief="ai_robotics_project">
+
+     ai_robotics_project
+
+  </description>
+  <author>Paul Barrett</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ai_robotics_project</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

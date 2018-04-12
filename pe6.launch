@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="stage_ros" type="stageros" name="stageros" args="$(find ai_labs)/world/maze1.world" respawn="false" output="screen" />
+	<node name="lab5_wm" pkg="ai_labs" type="lab5_waypoint_manager.py" args="$(find ai_labs)/world/maze1.world" output="screen" />
+	<node name="lab2pf" pkg="ai_labs" type="lab2.py" output="screen" />
+</launch>

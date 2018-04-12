@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="stage_ros" type="stageros" name="stageros" args="$(find ai_labs)/world/demo.world" respawn="false" output="screen" />
+    <node name="rostopic" pkg="rostopic" type="rostopic" args="pub -1 cmd_vel geometry_msgs/Twist -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 1.0]'"/>
+</launch>
