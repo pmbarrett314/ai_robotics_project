@@ -22,8 +22,8 @@ def laserCallback(laser_data):
     global front_distance
     global wall_distance
 
-    front_detection_distance = 0.9
-    wall_detection_distance = 0.9
+    front_detection_distance = 100000.0
+    wall_detection_distance = 100000.0
 
     wf_min_right = 10.0
     wf_min_front = 10.0
@@ -57,8 +57,8 @@ def laserCallback(laser_data):
 
 if __name__ == '__main__':
     rospy.init_node('lab3', anonymous=True) #Initialize the ros node
-    pub = rospy.Publisher('cmd_vel', Twist) #Create our publisher to send drive commands to the robot
-    rospy.Subscriber("base_scan_0", LaserScan, laserCallback) #Subscribe to the laser scan topic
+    pub = rospy.Publisher('/cmd_vel_mux/input/teleop', Twist) #Create our publisher to send drive commands to the robot
+    rospy.Subscriber("/scan", LaserScan, laserCallback) #Subscribe to the laser scan topic
 
     rate = rospy.Rate(10) #10 Hz
 
@@ -86,10 +86,10 @@ if __name__ == '__main__':
     #######################################
 
     while not rospy.is_shutdown():
-
         #Declare the twist command that we will publish this time step
         twist = Twist()
-        #print(state)
+        if front_distance>=0:
+		print(front_distance)
         ###############################
         # LAB 3 INNER LOOP CODE : BEGIN
         ###############################
