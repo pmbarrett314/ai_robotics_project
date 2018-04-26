@@ -84,12 +84,13 @@ if __name__ == '__main__':
     #######################################
     # LAB 3 VARIABLE DECLARATION CODE : END
     #######################################
-
     while not rospy.is_shutdown():
+        print(state)
+        print(front_distance)
         #Declare the twist command that we will publish this time step
         twist = Twist()
-        if front_distance>=0:
-		print(front_distance)
+        if front_distance>=0 or wall_distance>=0:
+		print("{} : {}".format(front_distance,wall_distance))
         ###############################
         # LAB 3 INNER LOOP CODE : BEGIN
         ###############################
@@ -107,7 +108,8 @@ if __name__ == '__main__':
             elif wall:
                 state=STATE_FOLLOW_FORWARD
             else:
-                twist.linear.x = abs(front_distance)
+                pass
+                #twist.linear.x = abs(front_distance)/10
         elif state==STATE_TURN_LEFT_1:
             if object_in_front:
                 twist.angular.z=math.pi/3
