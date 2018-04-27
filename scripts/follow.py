@@ -47,7 +47,9 @@ def laserCallback(laser_data):
         wall_distance = wf_min_right
 
 def bumpCallback(bump):
-    print("bumped")
+    twist = Twist()
+    twist.angular.z=-math.pi/2
+    pub.publish(twist)
 
 if __name__ == '__main__':
     rospy.init_node('lab3', anonymous=True) #Initialize the ros node
